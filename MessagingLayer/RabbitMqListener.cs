@@ -12,7 +12,7 @@ public class RabbitMqListener : IHostedService
     public RabbitMqListener()
     {
         // Initialize your RabbitMQ connection and channel
-        var factory = new ConnectionFactory() { HostName = "localhost" };
+        ConnectionFactory factory = new ConnectionFactory() { HostName = "localhost" };
         _connection = factory.CreateConnection();
         _channel = _connection.CreateModel();
         _channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
