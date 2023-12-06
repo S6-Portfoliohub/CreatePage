@@ -47,9 +47,9 @@ public class RabbitMqListener : IHostedService
         _channel.BasicConsume(queue: _queueName, autoAck: true, consumer: consumer);
 
         // Wait until the cancellation token is triggered
-        while (!cancellationToken.IsCancellationRequested)
-        {
-            Thread.Sleep(1000); // Adjust as needed
-        }
+        //while (!cancellationToken.IsCancellationRequested)
+        //{
+        //    Thread.Sleep(1000); // Adjust as needed
+        //}
     }
 }

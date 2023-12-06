@@ -1,15 +1,21 @@
 ﻿using System.Text;
+using MessagingLayer.Models;
 using RabbitMQ.Client;
+using System.Text.Json;
 
 namespace MessagingLayer
 {
     public class MessageSender
     {
-        public void Sendmessage() 
+        private readonly ConnectionFactory factory;
+        public MessageSender()
         {
-            var factory = new ConnectionFactory { HostName = "localhost" };
-            using var connection = factory.CreateConnection();
-            using var channel = connection.CreateModel();
+            factory = new ConnectionFactory { HostName = "localhost" };
+        }
+        public void CreateProjectmessage(ProjectMessageModel projectMessage) 
+        {
+            using IConnection connection = factory.CreateConnection();
+            using IModel channel = connection.CreateModel();
 
             channel.QueueDeclare(queue: "hello",
                                  durable: false,
@@ -17,7 +23,7 @@ namespace MessagingLayer
                                  autoDelete: false,
                                  arguments: null);
 
-            const string message = "Hello World!";
+            string message = JsonSerializer.Serialize(projectMessage);
             var body = Encoding.UTF8.GetBytes(message);
 
             channel.BasicPublish(exchange: string.Empty,

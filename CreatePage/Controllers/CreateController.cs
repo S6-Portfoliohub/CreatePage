@@ -1,4 +1,5 @@
-﻿using MessagingLayer;
+﻿using CreatePage.Models;
+using MessagingLayer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CreatePage.Controllers
@@ -11,13 +12,13 @@ namespace CreatePage.Controllers
 
         public CreateController()
         {
-              _messageSender = new MessageSender();
+            _messageSender = new MessageSender();
         }
 
-        [HttpGet("test")]
-        public async Task<ActionResult> test()
+        [HttpPost("test")]
+        public async Task<ActionResult> test(ProjectViewModel project)
         {
-            _messageSender.Sendmessage();
+            _messageSender.CreateProjectmessage(new() { UserID = project.UserID, Description = project.Description, Name = project.Name, Img = project.Img });
             return Ok();
         }
     }
