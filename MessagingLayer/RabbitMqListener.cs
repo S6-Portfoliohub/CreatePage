@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -11,10 +12,10 @@ namespace MessagingLayer
         private readonly IModel _channel;
         private readonly string _queueName = "hello";
 
-        public RabbitMqListener()
+        public RabbitMqListener(IOptions<RabbitMqSettings> rabbitMqSettings)
         {
             // Initialize your RabbitMQ connection and channel
-            ConnectionFactory factory = new ConnectionFactory() { HostName = "localhost" };
+            ConnectionFactory factory = new ConnectionFactory() { HostName = rabbitMqSettings.Value.HostName, UserName = rabbitMqSettings.Value.UserName, Password = rabbitMqSettings.Value.Password };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
