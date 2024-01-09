@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatePage", "CreatePage\CreatePage.csproj", "{A386A6AE-F567-49A3-9BEF-5A9E7FB8EA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreatePage", "CreatePage\CreatePage.csproj", "{A386A6AE-F567-49A3-9BEF-5A9E7FB8EA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagingLayer", "MessagingLayer\MessagingLayer.csproj", "{63B1054C-AD7F-49C4-88CE-A9DF85187321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagingLayer", "MessagingLayer\MessagingLayer.csproj", "{63B1054C-AD7F-49C4-88CE-A9DF85187321}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploadLayer", "FileUploadLayer\FileUploadLayer.csproj", "{4DBBA6F3-6740-4D4F-A320-A7A2655E42DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{63B1054C-AD7F-49C4-88CE-A9DF85187321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63B1054C-AD7F-49C4-88CE-A9DF85187321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63B1054C-AD7F-49C4-88CE-A9DF85187321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DBBA6F3-6740-4D4F-A320-A7A2655E42DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DBBA6F3-6740-4D4F-A320-A7A2655E42DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DBBA6F3-6740-4D4F-A320-A7A2655E42DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DBBA6F3-6740-4D4F-A320-A7A2655E42DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

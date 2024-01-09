@@ -10,13 +10,13 @@ namespace CreatePage.Controllers
     {
         private readonly MessageSender _messageSender;
 
-        public CreateController()
+        public CreateController(MessageSender messageSender)
         {
-            _messageSender = new MessageSender();
+            _messageSender = messageSender;
         }
 
-        [HttpPost("test")]
-        public async Task<ActionResult> test(ProjectViewModel project)
+        [HttpPost("project")]
+        public async Task<ActionResult> Project(ProjectViewModel project)
         {
             _messageSender.CreateProjectmessage(new() { UserID = project.UserID, Description = project.Description, Name = project.Name, Img = project.Img });
             return Ok();

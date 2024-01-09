@@ -1,3 +1,4 @@
+using FileUploadLayer;
 using MessagingLayer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<RabbitMqSettings>(
     builder.Configuration.GetSection("RabbitMq"));
+
+builder.Services.Configure<BlobSettings>(
+    builder.Configuration.GetSection("BlobStorage"));
+
+builder.Services.AddScoped<MessageSender>();
+builder.Services.AddScoped<FileDAO>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
