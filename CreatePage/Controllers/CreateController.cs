@@ -21,5 +21,12 @@ namespace CreatePage.Controllers
             _messageSender.CreateProjectmessage(new() { UserID = project.UserID, Description = project.Description, Name = project.Name, Img = project.Img });
             return Ok();
         }
+
+        [HttpDelete("project/{id}")]
+        public async Task<ActionResult> Project(string id)
+        {
+            _messageSender.DeleteProjectMessage(id);
+            return Ok();
+        }
     }
 }

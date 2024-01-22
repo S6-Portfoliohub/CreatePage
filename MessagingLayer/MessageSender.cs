@@ -12,6 +12,7 @@ namespace MessagingLayer
         private readonly IConnection _connection;
         private readonly IModel _channel;
         private readonly string _queueName = "hello";
+        private readonly string _deletequeueName = "delete";
         public MessageSender(IOptions<RabbitMqSettings> rabbitMqSettings)
         {
             ConnectionFactory factory = new ConnectionFactory { HostName = rabbitMqSettings.Value.HostName, UserName = rabbitMqSettings.Value.UserName, Password = rabbitMqSettings.Value.Password };
@@ -30,6 +31,19 @@ namespace MessagingLayer
 
             _channel.BasicPublish(exchange: string.Empty,
                                  routingKey: _queueName,
+                                 basicProperties: null,
+                                 body: body);
+
+            Console.WriteLine($" [x] Sent {message}");
+        }
+
+        public void DeleteProjectMessage(string id)
+        {
+            string message = JsonSerializer.Serialize(id);
+            var body = Encoding.UTF8.GetBytes(message);
+
+            _channel.BasicPublish(exchange: string.Empty,
+                                 routingKey: _deletequeueName,
                                  basicProperties: null,
                                  body: body);
 
